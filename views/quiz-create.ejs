@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Create a New Quiz</h2>
+    <div class="text-end tools">
+        
+        <button id="btnNewQuiz" type="submit" class="btn btn-quiz"><i class="fas fa-save"></i> Save</button>
+        <a href="/quiz-list" type="button" class="btn btn-dark"><i class="fas fa-times"></i> Cancel</a>
+    </div>
+    <form id="formNewQuiz" action="/quiz-create" method="POST">
+    <div  class="mb-3">
+        <label for="quizname">Name of Quiz</label>
+        <input type="text" id="quizname" name="quizname" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="quizsubject">Subject</label>
+        <select type="text" id="quizsubject" name="quizsubject" class="form-control" ></select>
+    </div>
+    <div class="mb-3">
+        <label for="quizmodule">Module</label>
+        <input type="text" id="quizmodule" name="quizmodule" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="quizdesc">Description</label>
+        <textarea  class="form-control" id="quizdesc" name="quizdesc"></textarea>
+    </div>
+
+</form>
+</div>
+<script>
+    const form = document.querySelector("#formNewQuiz")
+    const btnNewQuiz = document.querySelector("#btnNewQuiz")
+    btnNewQuiz.addEventListener('click',()=>{
+    
+    form.action = "/quiz-create"
+    form.submit()
+  })
+
+
+</script>

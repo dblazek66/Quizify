@@ -1,0 +1,76 @@
+<div class="container">
+  <h2>Edit Question</h2>
+   <form id="QuestEditForm"  method="POST">
+      <form id="questionEdit">
+      <div class="text-end tools">
+        <button id="btnSaveEdit" type="button" class="btn btn-quiz"><i class="fas fa-plus"></i> Save</button>
+        <!--input type="submit" class="btn btn-quiz" value="Update"-->
+        <button id="btnDelete" type="button" class="btn btn-danger">Delete</button>
+        <a href="/quest-list/<%= question.quizid %>" type="button" class="btn btn-dark"><i class="fas fa-times"></i> Cancel</a>
+      </div>      
+      <input type="hidden" class="form-control" id="quizid" name="quizid" value="<%= question.quizid %>">
+      <div  class="mb-3">
+        <label for="question">Question</label>
+        <input type="text" class="form-control" id="question" name="question" value="<%= question.question %>" required >
+      </div>
+      <div class="mb-3">
+        <label for="answer">Answer</label>
+        <input type="text" class="form-control" id="answer" name="answer" value="<%= question.answer %>" required >
+      </div>
+      <div class="mb-3 card p-3">
+        <input type="file" id="imagename" name="imagename" accept="image/*">
+        <label for="imagename"><i class="fas fa-upload"></i> Upload Image</label>
+        <div id="image-file-name">None</div>
+        <div class="m-3">
+          <img height="100px" src="#" id="imageDisplay">
+        </div>
+        
+      </div>
+      
+      <br>
+      <div class="mb-3">
+        <label >Multiple Choice Options</label>
+          <div>
+            <input class="form-control m-1" type="text" id="mcoptionA" name="mcoptionA" placeholder="Choice A"value="<%= question.mcoptionA %>" >
+            <input class="form-control m-1" type="text" id="mcoptionB" name="mcoptionB" placeholder="Choice B"value="<%= question.mcoptionB %>" >
+            <input class="form-control m-1" type="text" id="mcoptionC" name="mcoptionC" placeholder="Choice C"value="<%= question.mcoptionC %>" >
+            <input class="form-control m-1" type="text" id="mcoptionD" name="mcoptionD" placeholder="Choice D"value="<%= question.mcoptionD %>" >
+            <input class="form-control m-1" type="text" id="mcoptionE" name="mcoptionE" placeholder="Choice E"value="<%= question.mcoptionE %>" >
+          </div>
+      </div>
+    </form>
+ </div>
+ 
+<script>
+  const form = document.querySelector("#QuestEditForm")
+  const btnDelete = document.querySelector("#btnDelete")
+  const btnSaveEdit = document.querySelector("#btnSaveEdit")
+
+  btnSaveEdit.addEventListener('click',()=>{
+    sendForm("/quest-edit/<%= question._id %>?_method=PUT")
+  })
+
+  btnDelete.addEventListener('click',()=>{
+    const result = confirm("Confirm Deletion of this question?")
+    if(!result)return
+    sendForm("/quest-edit/<%= question._id %>?_method=DELETE")
+  })
+
+  const sendForm = (path) =>{
+    form.action = path
+    form.submit()
+  }
+
+  const imagename = document.querySelector("#imagename")
+  const displayFile = document.querySelector("#image-file-name")
+
+
+imagename.addEventListener('change',(evt)=>{
+ const [file] = imagename.files
+  if (file) {
+    imageDisplay.src = URL.createObjectURL(file)
+    displayFile.textContent = file.name
+  }
+})
+
+</script>

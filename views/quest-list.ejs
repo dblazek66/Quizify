@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Questions List</h2>
+    <div class="text-end tools">
+        <span class="tools-title"><%= quiz[0].quizname %></span>
+        <a href="/quest-create/<%= quizid %>" class="btn btn-quiz"><i class="fas fa-plus"></i> New Question</a>
+        <a href="/quiz-list" type="button" class="btn btn-dark"><i class="fas fa-times"></i> Cancel</a>        
+    </div>
+    <div class="mt-2">
+       <table class="table">
+        <tbody>
+            <% count=1 %>
+             <% questions.forEach(item => { %>
+            <tr>
+                <td><%= count++ %></td>
+                <td>
+                    <a href="/quest-edit/<%= item._id  %>">
+                        <%= item.question %>
+                    </a>
+                </td>
+                <td><%= item.answer %></td>
+            </tr>    
+        <% }) %>
+        </tbody>
+       </table>
+
+    </div>
+</div>

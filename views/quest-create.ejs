@@ -1,0 +1,41 @@
+  <div class="container">
+    <h3>Create New Question</h3>
+    <div class=" mt-2">
+
+      <form action="/quest-create/<%= quizid %>" method="post">
+        <div class="mt-2 text-end tools">
+          
+          <input type="submit" class="btn btn-quiz" value="Save">
+          <a href="/quest-list/<%= quizid %>" type="button" class="btn btn-dark"><i class="fas fa-times"></i> Cancel</a>
+        </div>
+
+        <input type="hidden" class="form-control" id="quizid" name="quizid" value="">
+        <div  class="mb-3">
+          <label for="question">Question</label>
+          <input type="text" class="form-control" id="question" name="question" required >
+        </div>
+        <div class="mb-3">
+          <label for="answer">Answer</label>
+          <input type="text" class="form-control" id="answer" name="answer" required >
+        </div>
+        <div class="mb-3">
+          <label for="imagename">Upload Image</label>
+          <input type="file" id="imagename" name="imagename" accept="image/*">
+        </div>
+        <br>
+        <div class="mb-3">
+          <label >Multiple Choice Options</label>
+            <div>
+              <input class="form-control m-1" type="text" id="mcoptionA" name="mcoptionA" placeholder="Choice A">
+              <input class="form-control m-1" type="text" id="mcoptionB" name="mcoptionB" placeholder="Choice B">
+              <input class="form-control m-1" type="text" id="mcoptionC" name="mcoptionC" placeholder="Choice C">
+              <input class="form-control m-1" type="text" id="mcoptionD" name="mcoptionD" placeholder="Choice D">
+              <input class="form-control m-1" type="text" id="mcoptionE" name="mcoptionE" placeholder="Choice E">
+            </div>
+        </div>
+
+      </form>      
+    </div>
+    
+ </div>
+

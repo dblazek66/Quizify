@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>My Quiz List</h2>
+    <div class="text-end tools">
+        <a href="/quiz-create/" class="btn btn-quiz"><i class="fas fa-plus"></i> Create New Quiz</a>
+    </div>
+    <div class="mt-2">
+        <table class="table">
+            <thead>
+
+            </thead>
+            <tbody>
+                <% data.forEach(item => { %>
+                    <tr>
+                    <td><a href="/quest-list/<%= item._id %>"><%= item.quizname %></a></td>
+                    <td class="fst-italic fw-lighter small"><%= item.quizdesc %></td>
+                    <td><%= item.quizsubject %> : <%= item.quizmodule %></td>
+                    <td><%= item.createdAt.toDateString() %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>        
+    </div>
+</div>
